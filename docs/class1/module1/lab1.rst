@@ -114,13 +114,19 @@ Let's get started.
    +-----------------------+----------------------------------------+
    | Key                   | Value                                  |
    +=======================+========================================+
+   | Resource group        | Create new                             |
+   +-----------------------+----------------------------------------+
+   | Resource group name   | f5bigipuser<student number>usergroup   |
+   +-----------------------+----------------------------------------+
+   | Region                | <Closest Azure DC>                     |
+   +-----------------------+----------------------------------------+
    | BIG-IP Image          | F5 BIG-IP VE - LTM/DNS (BYOL)          |
    +-----------------------+----------------------------------------+
    | Deployment Model      | Resource Manager                       |
    +-----------------------+----------------------------------------+
    | Name                  | f5bigipuser<student number>bigip1      |
    +-----------------------+----------------------------------------+
-   | VM disk type          | SSD                                    |
+   | Size                  | D2_V2                                  |
    +-----------------------+----------------------------------------+
    | User name             | f5bigipuser<student number>            |
    +-----------------------+----------------------------------------+
@@ -130,22 +136,21 @@ Let's get started.
    +-----------------------+----------------------------------------+
    | Subscription          | <User Unique>                          |
    +-----------------------+----------------------------------------+
-   | Resource group        | Create new                             |
+   | Pubblic inbound ports | Allow selected ports                   |
    +-----------------------+----------------------------------------+
-   | Resource group name   | f5bigipuser<student number>usergroup   |
+   | Select inbound ports  | SSH                                    |
    +-----------------------+----------------------------------------+
-   | Location              | <Closest Azure DC>                     |
-   +-----------------------+----------------------------------------+
+
 
    Example:
 
    .. image:: /_static/image11.png
       :scale: 50 %
 
-#. Once done, click **OK**
+#. Once done, click **Next**
 
-   You now need to select the Virtual Machine disk type and image size.
-   Using the information in Table 1.2 complete the “Size” page.
+   You now need to select the Virtual Machine disk type.
+   Using the information in Table 1.2 complete the “Disk” page.
 
    .. NOTE::
       For a complete list of compatible Azure instance sizes, refer to
@@ -153,49 +158,42 @@ Let's get started.
 
    Table 1.2
 
-   +-------------+-------------------+
-   | Key         | Value             |
-   +=============+===================+
-   | Disk Type   | HDD               |
-   +-------------+-------------------+
-   | Size        | D2\_V2 Standard   |
-   +-------------+-------------------+
+   +--------------+-------------------+
+   | Key          | Value             |
+   +==============+===================+
+   | OS disk type | Standard HDD      |
+   +--------------+-------------------+
 
-#. Select **HDD** from “Supported disk type”
-#. Then select **View all** to browse the available VM sizes and features
+#. Select **Standard HDD** from “Supported disk type”
 
    .. image:: /_static/image12.png
       :scale: 50 %
 
-#. Select **D2\_V2 Standard**
+#. Click **Next**
+
+   In the “Networking” page, provide the remaining information required for
+   the BIG-IP deployment and associated resources. Using the information in
+   Table 1.3 to complete the “Networking” page.
+
+   Table 1.3
+
+   +---------------------+------------+
+   | Key                 | Value      |
+   +=====================+============+
+   | Virtual Network     | Create new |
+   +---------------------+------------+
+   | Subnet              | default    |
+   +---------------------+------------+
+
+   The example uses 10.1.0.0/16 for the Virtual Network address space and the
+   while the default subnet uses 10.1.0.0/24 address space
+
+   Look around at the various configurable items but leave them unchanged.
 
    .. image:: /_static/image13.png
       :scale: 50 %
 
-#. Click **Select**
-
-   In the “Settings” page, provide the remaining information required for
-   the BIG-IP deployment and associated resources. Using the information in
-   Table 1.3 to complete the “Settings” page.
-
-   Table 1.3
-
-   +---------------------+---------+
-   | Key                 | Value   |
-   +=====================+=========+
-   | Storage Type        | HDD     |
-   +---------------------+---------+
-   | Use managed disks   | No      |
-   +---------------------+---------+
-
-#. Under Settings, change "Disk type" to **HDD** and "Use managed disk" to **No**
-
-   Look around at the various configurable items but leave them unchanged.
-
-   .. image:: /_static/image14.png
-      :scale: 50 %
-
-#. Once done, click **OK**
+#. Once done, click **Review + create**
 #. Review the "Summary" page and the purchase you are about to make
 
    .. Note:: In the screenshot below:
@@ -204,14 +202,15 @@ Let's get started.
       -  Notice the F5 license BYOL is *not* charged
       -  Notice the VM where the BIG-IP VE will reside is charged
 
-   .. image:: /_static/image15-top.png
+   .. image:: /_static/image14.png
       :scale: 50 %
 
 #. Supply your email and phone number for validation
 
-   .. image:: /_static/lab-instance-validation.png
+   .. image:: /_static/image15.png
+      :scale: 50 %
 
-#. Click **Purchase** or **Create**
+#. Click **Create**
 
 Task 3 – Allow management and HTTP access to the BIG-IP
 -------------------------------------------------------
@@ -371,7 +370,7 @@ the BIG-IP's public IP address to which you will connect.
    .. image:: /_static/image8.png
       :scale: 50 %
 
-#. License your F5 BIG-IP by typing ``SOAPLicenseClient --basekey <license>``
+#. License your F5 BIG-IP by typing ``install sys license registration-key <license>``
 
    Example:
 
@@ -386,7 +385,7 @@ the BIG-IP's public IP address to which you will connect.
 
    .. admonition:: TMSH
 
-      tmsh modify sys global-settings hostname f5bigipuserx.azure.local
+      modify sys global-settings hostname f5bigipuserx.azure.local
 
    Example:
 
@@ -398,28 +397,18 @@ the BIG-IP's public IP address to which you will connect.
 
    .. admonition:: TMSH 
 
-      tmsh modify auth user f5bigipuserx password Demo123
+      modify auth user f5bigipuserx password Demo123
 
    Example:
 
    .. image:: /_static/image29.png
       :scale: 50 %
 
-#. Wait until the system prompt changes to the following:
-
-   .. code-block:: bash
-
-      [f5bigipuserx@f5bigipuserx:Active:Standalone] ~ #
-
-   .. WARNING::
-      Changes made in the CLI are not present in the running configuration
-      until they are saved.
-
 #. Save the system configuration
 
    .. admonition:: TMSH 
 
-      tmsh save sys config
+      save sys config
 
    Example:
 
@@ -465,73 +454,50 @@ the Microsoft Azure Portal.
    +-----------------------+---------------------------------------------+
    | Key                   | Value                                       |
    +=======================+=============================================+
+   | Subscription          | <User Unique>                               |
+   +-----------------------+---------------------------------------------+
+   | Resource Group        | Use existing previously created in step 1   |
+   +-----------------------+---------------------------------------------+
    | Name                  | f5bigipuser<student number>wordpress        |
    +-----------------------+---------------------------------------------+
-   | VM disk type          | SSD                                         |
+   | Region                | <Closest Azure DC>                          |
    +-----------------------+---------------------------------------------+
-   | User name             | f5bigipuser<student number>                 |
+   | Size                  | Standard D1_V2                              |
+   +-----------------------+---------------------------------------------+
+   | Username              | f5bigipuser<student number>                 |
    +-----------------------+---------------------------------------------+
    | Authentication type   | SSH public key                              |
    +-----------------------+---------------------------------------------+
    | SSH public key        | From Lab 1, Task 1                          |
    +-----------------------+---------------------------------------------+
-   | Subscription          | <User Unique>                               |
-   +-----------------------+---------------------------------------------+
-   | Resource Group        | Use existing previously created in step 1   |
-   +-----------------------+---------------------------------------------+
-   | Location              | <Closest Azure DC>                          |
-   +-----------------------+---------------------------------------------+
 
    .. image:: /_static/image34.png
       :scale: 50 %
 
-#. Click **OK** at the bottom of the page
+#. Click **Next** at the bottom of the page
 
-   Use the information in Table 1.7 to complete the “Choose a size” configuration
+   Use the information in Table 1.7 to complete the “Disks” configuration
    page during this deployment.
 
    Table 1.7
 
-   +-------------+------------+
-   | Key         | Value      |
-   +=============+============+
-   | Disk Type   | HDD        |
-   +-------------+------------+
-   | Size        | A1 Basic   |
-   +-------------+------------+
-
-#. Choose **A1 Basic**
+   +--------------+--------------+
+   | Key          | Value        |
+   +==============+==============+
+   | OS disk type | Standard HDD |
+   +--------------+--------------+
 
    .. image:: /_static/image35.png
       :scale: 50 %
 
-#. Click **Select**
+#. Click **Next**
 
-   Use the information in Table 1.8 to complete the “Settings” configuration
-   page during this deployment.
-
-   .. NOTE::
-      On the Settings page you’ll see a warning concerning the VM size
-      chosen.
-
-   Table 1.8
-
-   +---------------------+---------+
-   | Key                 | Value   |
-   +=====================+=========+
-   | Storage Type        | HDD     |
-   +---------------------+---------+
-   | Use managed disks   | No      |
-   +---------------------+---------+
-
-#. Change the "Disk type" to **HDD**
-#. Set “Use managed disk” to **No**
-#. Keep the other configurations unmodified
+   Use the existing Virtual network as previously created and keep the other configurations unmodified
 
    .. image:: /_static/image36.png
       :scale: 50 %
 
-#. Click **OK**
+#. Click **Review + create**
 #. Verify the summary
 
    .. image:: /_static/image37-top.png
@@ -540,8 +506,9 @@ the Microsoft Azure Portal.
 #. Supply your email and phone number for validation
 
    .. image:: /_static/lab-instance-validation.png
+      :scale: 50 %
 
-#. Click **Purchase** or **Create**
+#. Click **Create**
 #. Go to **Resource groups** and click on your resource group
 #. Select your WordPress “Public IP address”
 

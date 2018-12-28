@@ -144,13 +144,19 @@ Table 1.1
 +-----------------------+----------------------------------------+
 | Key                   | Value                                  |
 +=======================+========================================+
+| Resource group        | Create new                             |
++-----------------------+----------------------------------------+
+| Resource group name   | f5bigipuser<student number>usergroup   |
++-----------------------+----------------------------------------+
+| Region                | <Closest Azure DC>                     |
++-----------------------+----------------------------------------+
 | BIG-IP Image          | F5 BIG-IP VE - LTM/DNS (BYOL)          |
 +-----------------------+----------------------------------------+
 | Deployment Model      | Resource Manager                       |
 +-----------------------+----------------------------------------+
 | Name                  | f5bigipuser<student number>bigip1      |
 +-----------------------+----------------------------------------+
-| VM disk type          | SSD                                    |
+| Size                  | D2_V2                                  |
 +-----------------------+----------------------------------------+
 | User name             | f5bigipuser<student number>            |
 +-----------------------+----------------------------------------+
@@ -160,19 +166,17 @@ Table 1.1
 +-----------------------+----------------------------------------+
 | Subscription          | <User Unique>                          |
 +-----------------------+----------------------------------------+
-| Resource group        | Create new                             |
+| Pubblic inbound ports | Allow selected ports                   |
 +-----------------------+----------------------------------------+
-| Resource group name   | f5bigipuser<student number>usergroup   |
-+-----------------------+----------------------------------------+
-| Location              | <Closest Azure DC>                     |
+| Select inbound ports  | SSH                                    |
 +-----------------------+----------------------------------------+
 
 |image10|
 
-Once done, Click “OK”.
+Once done, Click “Next”.
 
 You now need to select the Virtual Machine disk type and image size.
-Using the information in Table 1.2 complete the “Size” page.
+Using the information in Table 1.2 complete the “Disk” page.
 
 NOTE: For a complete list of compatible Azure instance sizes, refer to
 the “BIG-IP Virtual Edition and Microsoft Azure: Setup” guide.
@@ -182,13 +186,10 @@ Table 1.2
 +-------------+-------------------+
 | Key         | Value             |
 +=============+===================+
-| Disk Type   | HHD               |
-+-------------+-------------------+
-| Size        | D2\_V2 Standard   |
+| Disk Type   | Standard HHD      |
 +-------------+-------------------+
 
-Select HDD from “Supported disk type” then “View all” to browse the
-available VM sizes and features.
+Select Standard HDD from “OS disk type”.
 
 |image11|
 
