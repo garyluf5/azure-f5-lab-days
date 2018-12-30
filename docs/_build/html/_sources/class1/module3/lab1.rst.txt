@@ -360,6 +360,7 @@ the Microsoft Azure Portal.
 #. Supply your email and phone number for validation
 
    .. image:: /_static/lab-instance-validation.png
+      :scale: 50 %
 
 #. Click **Purchase** or **Create**
 #. Go to **Resource groups** and click on your resource group

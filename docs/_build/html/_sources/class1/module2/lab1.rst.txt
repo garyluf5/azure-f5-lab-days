@@ -40,7 +40,7 @@ deployment.
    +=======================+==============================+
    | Name                  | user<student number>_vnet    |
    +-----------------------+------------------------------+
-   | Address space         | 10.10.0.0/16                 |
+   | Address space         | 10.10.0.0/22                 |
    +-----------------------+------------------------------+
    | Subscription          | <User Unique>                |
    +-----------------------+------------------------------+
@@ -48,7 +48,7 @@ deployment.
    +-----------------------+------------------------------+
    | Location              | <Closest Azure DC>           |
    +-----------------------+------------------------------+
-   | Address Range         | 10.10.0.0/22                 |
+   | Address Range         | 10.10.0.0/24                 |
    +-----------------------+------------------------------+
 
    .. image:: /_static/image58.png
@@ -85,73 +85,48 @@ the Microsoft Azure Portal.
    +-----------------------+-------------------------------------------------+
    | Key                   | Value                                           |
    +=======================+=================================================+
+   | Subscription          | <User Unique>                                   |
+   +-----------------------+-------------------------------------------------+
    | Name                  | user<student number>wordpress                   |
    +-----------------------+-------------------------------------------------+
-   | VM disk type          | SSD                                             |
+   | Region                | <Closest Azure DC>                              |
    +-----------------------+-------------------------------------------------+
-   | User name             | f5bigipuser<student number>                     |
+   | Size                  | Standard D1_V2                                  |
    +-----------------------+-------------------------------------------------+
    | Authentication type   | SSH public key                                  |
    +-----------------------+-------------------------------------------------+
+   | User name             | f5bigipuser<student number>                     |
+   +-----------------------+-------------------------------------------------+
    | SSH public key        | From Lab 1, Task 1                              |
-   +-----------------------+-------------------------------------------------+
-   | Subscription          | <User Unique>                                   |
-   +-----------------------+-------------------------------------------------+
-   | Resource Group        | Use existing: wordpress                         |
-   +-----------------------+-------------------------------------------------+
-   | Location              | <Closest Azure DC>                              |
    +-----------------------+-------------------------------------------------+
 
    .. image:: /_static/image59.png
       :scale: 50 %
 
-#. Click **OK** at the bottom of the page
+#. Click **Next** at the bottom of the page
 
-   Use the information in Table 2.3 to complete the “Choose a size”
+   Use the information in Table 2.3 to complete the “Disks”
    configuration page during this deployment.
 
    Table 2.3
 
-   +-------------+------------+
-   | Key         | Value      |
-   +=============+============+
-   | Disk Type   | HDD        |
-   +-------------+------------+
-   | Size        | A1 Basic   |
-   +-------------+------------+
-
-#. Choose **A1 Basic**
+   +-----------------------+-------------------------------------------------+
+   | Key                   | Value                                           |
+   +=======================+=================================================+
+   | Disk Type             | Standard HDD                                    |
+   +-----------------------+-------------------------------------------------+
 
    .. image:: /_static/image35.png
       :scale: 50 %
 
-#. Click **Select**
+#. Click **Next**
 
-   Use the information in Table 2.4 to complete the “Settings” configuration
-   page during this deployment.
-
-   .. NOTE::
-      On the Settings page you’ll see a warning concerning the VM size
-      chosen.
-
-   Table 2.4
-
-   +---------------------+---------+
-   | Key                 | Value   |
-   +=====================+=========+
-   | Storage Type        | HDD     |
-   +---------------------+---------+
-   | Use managed disks   | No      |
-   +---------------------+---------+
-
-#. Change the "Disk type" to **HDD**
-#. Set “Use managed disk” to **No**
 #. Keep the other configurations unmodified
 
    .. image:: /_static/image60.png
       :scale: 50 %
 
-#. Click **OK**
+#. Click **Review + create**
 #. Verify the summary
 
    .. image:: /_static/image37-top.png
@@ -160,8 +135,9 @@ the Microsoft Azure Portal.
 #. Supply your email and phone number for validation
 
    .. image:: /_static/lab-instance-validation.png
+      :scale: 50 %
 
-#. Click **Purchase** or **Create**
+#. Click **Create**
 #. Go to **Resource groups** and click on your resource group
 #. Select your WordPress “Public IP address”
 
@@ -260,7 +236,7 @@ of your WordPress application.
    .. image:: /_static/image67.png
       :scale: 50 %
 
-#. Click on **Recommendations**
+#. Click on **Compute & apps**
 
    .. Tip::
       Recommendations are created by the Azure Security Center to make your
@@ -290,20 +266,15 @@ of your WordPress application.
       :scale: 50 %
 
    .. Note::
-      There are two deployment methods available today for the
+      There are two consumption images available today for the
       pre-configured F5 WAF:
 
-      - “Automatically provisioned”
-      - “Semi-automatically provisioned”
+      - “Bring Your Own License”
+      - “Hourly Pay As You Go”
 
-      For this lab you will be using the **“Semi-automatically provisioned”** method.
-      The former will most likely be depracated. The latter, semi-automatically provisioned,
-      gives the user more control in the deployment.
+      For this lab you will be using the **“BYOL”** image.
 
-#. Select the option for **Semi-automatically provisioned**
-
-   .. image:: /_static/lab02-waf01.png
-      :scale: 50 %
+#. Select the option for **BYOL**
 
 #. Click **Create**
 
@@ -317,7 +288,7 @@ of your WordPress application.
    +=======================+=================================================+
    | Subscription          | <User Unique>                                   |
    +-----------------------+-------------------------------------------------+
-   | Resource Group        | Create new: wordpress-acs<student number>       |
+   | Resource Group        | Create new: wordpress-asc<student number>       |
    +-----------------------+-------------------------------------------------+
    | Location              | <User Unique>                                   |
    +-----------------------+-------------------------------------------------+
@@ -591,31 +562,7 @@ Finalizing the WAF deployment will eliminate the ability to access
 the WordPress application directly. Access to the WordPress
 application will only be available through the F5 BIG-IP.
 
-#. Go back to the Microsoft Azure portal and navigate to Azure Security
-   Center
-#. Click on **Security Center -> Overview**
-
-   .. image:: /_static/image85.png
-      :scale: 50 %
-
-#. Click **Recommendations**
-#. Select **Finalize web application firewall setup**
-
-   .. image:: /_static/image86.png
-      :scale: 50 %
-
-#. Click on the WordPress application
-
-   .. image:: /_static/image87.png
-      :scale: 50 %
-
-#. You will be presented a message stating to complete the remaining tasks
-   via the *Solutions Center*.
-
-   .. image:: /_static/lab02-waf19.png
-
-#. Click **OK**
-#. Go back to Azure Security Center and select **Security solutions**
+#. Go to Azure Security Center and select **Security solutions**
 
    .. image:: /_static/lab02-waf20.png
 
@@ -638,6 +585,10 @@ application will only be available through the F5 BIG-IP.
 
       Now is a good time to raise your hand with questions.
 
+#. You will be presented a message stating to complete the remaining tasks
+
+   .. image:: /_static/lab02-waf19.png
+#. Click **Ok**
 #. When done, refresh the **Security solutions** page again
 #. Notice the health of the solution is now green
 

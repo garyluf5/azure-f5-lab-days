@@ -283,7 +283,7 @@ deployment.</p>
 <li><p class="first">Click on <strong>Networking</strong></p>
 </li>
 <li><p class="first">Click on <strong>Virtual network</strong></p>
-<a class="reference internal image-reference" href="../../_images/image57.png"><img alt="../../_images/image57.png" src="../../_images/image57.png" style="width: 727.0px; height: 348.0px;" /></a>
+<a class="reference internal image-reference" href="../../_images/image57.png"><img alt="../../_images/image57.png" src="../../_images/image57.png" style="width: 502.0px; height: 236.0px;" /></a>
 <p>Use the information provided in Table 2.1 below to create a virtual network.</p>
 <p>Table 2.1</p>
 <table border="1" class="docutils">
@@ -301,7 +301,7 @@ deployment.</p>
 <td>user&lt;student number&gt;_vnet</td>
 </tr>
 <tr class="row-odd"><td>Address space</td>
-<td>10.10.0.0/16</td>
+<td>10.10.0.0/22</td>
 </tr>
 <tr class="row-even"><td>Subscription</td>
 <td>&lt;User Unique&gt;</td>
@@ -313,11 +313,11 @@ deployment.</p>
 <td>&lt;Closest Azure DC&gt;</td>
 </tr>
 <tr class="row-odd"><td>Address Range</td>
-<td>10.10.0.0/22</td>
+<td>10.10.0.0/24</td>
 </tr>
 </tbody>
 </table>
-<a class="reference internal image-reference" href="../../_images/image58.png"><img alt="../../_images/image58.png" src="../../_images/image58.png" style="width: 581.0px; height: 730.0px;" /></a>
+<a class="reference internal image-reference" href="../../_images/image58.png"><img alt="../../_images/image58.png" src="../../_images/image58.png" style="width: 332.5px; height: 499.5px;" /></a>
 </li>
 <li><p class="first">Click <strong>Create</strong></p>
 </li>
@@ -353,42 +353,39 @@ page during this deployment.</p>
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td>Name</td>
+<tr class="row-even"><td>Subscription</td>
+<td>&lt;User Unique&gt;</td>
+</tr>
+<tr class="row-odd"><td>Name</td>
 <td>user&lt;student number&gt;wordpress</td>
 </tr>
-<tr class="row-odd"><td>VM disk type</td>
-<td>SSD</td>
+<tr class="row-even"><td>Region</td>
+<td>&lt;Closest Azure DC&gt;</td>
 </tr>
-<tr class="row-even"><td>User name</td>
-<td>f5bigipuser&lt;student number&gt;</td>
+<tr class="row-odd"><td>Size</td>
+<td>Standard D1_V2</td>
 </tr>
-<tr class="row-odd"><td>Authentication type</td>
+<tr class="row-even"><td>Authentication type</td>
 <td>SSH public key</td>
+</tr>
+<tr class="row-odd"><td>User name</td>
+<td>f5bigipuser&lt;student number&gt;</td>
 </tr>
 <tr class="row-even"><td>SSH public key</td>
 <td>From Lab 1, Task 1</td>
 </tr>
-<tr class="row-odd"><td>Subscription</td>
-<td>&lt;User Unique&gt;</td>
-</tr>
-<tr class="row-even"><td>Resource Group</td>
-<td>Use existing: wordpress</td>
-</tr>
-<tr class="row-odd"><td>Location</td>
-<td>&lt;Closest Azure DC&gt;</td>
-</tr>
 </tbody>
 </table>
-<a class="reference internal image-reference" href="../../_images/image59.png"><img alt="../../_images/image59.png" src="../../_images/image59.png" style="width: 673.0px; height: 771.0px;" /></a>
+<a class="reference internal image-reference" href="../../_images/image59.png"><img alt="../../_images/image59.png" src="../../_images/image59.png" style="width: 615.0px; height: 582.5px;" /></a>
 </li>
-<li><p class="first">Click <strong>OK</strong> at the bottom of the page</p>
-<p>Use the information in Table 2.3 to complete the “Choose a size”
+<li><p class="first">Click <strong>Next</strong> at the bottom of the page</p>
+<p>Use the information in Table 2.3 to complete the “Disks”
 configuration page during this deployment.</p>
 <p>Table 2.3</p>
 <table border="1" class="docutils">
 <colgroup>
-<col width="52%" />
-<col width="48%" />
+<col width="32%" />
+<col width="68%" />
 </colgroup>
 <thead valign="bottom">
 <tr class="row-odd"><th class="head">Key</th>
@@ -397,62 +394,26 @@ configuration page during this deployment.</p>
 </thead>
 <tbody valign="top">
 <tr class="row-even"><td>Disk Type</td>
-<td>HDD</td>
-</tr>
-<tr class="row-odd"><td>Size</td>
-<td>A1 Basic</td>
+<td>Standard HDD</td>
 </tr>
 </tbody>
 </table>
-</li>
-<li><p class="first">Choose <strong>A1 Basic</strong></p>
 <a class="reference internal image-reference" href="../../_images/image35.png"><img alt="../../_images/image35.png" src="../../_images/image35.png" style="width: 496.0px; height: 312.0px;" /></a>
 </li>
-<li><p class="first">Click <strong>Select</strong></p>
-<p>Use the information in Table 2.4 to complete the “Settings” configuration
-page during this deployment.</p>
-<div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">On the Settings page you’ll see a warning concerning the VM size
-chosen.</p>
-</div>
-<p>Table 2.4</p>
-<table border="1" class="docutils">
-<colgroup>
-<col width="70%" />
-<col width="30%" />
-</colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">Key</th>
-<th class="head">Value</th>
-</tr>
-</thead>
-<tbody valign="top">
-<tr class="row-even"><td>Storage Type</td>
-<td>HDD</td>
-</tr>
-<tr class="row-odd"><td>Use managed disks</td>
-<td>No</td>
-</tr>
-</tbody>
-</table>
-</li>
-<li><p class="first">Change the “Disk type” to <strong>HDD</strong></p>
-</li>
-<li><p class="first">Set “Use managed disk” to <strong>No</strong></p>
+<li><p class="first">Click <strong>Next</strong></p>
 </li>
 <li><p class="first">Keep the other configurations unmodified</p>
-<a class="reference internal image-reference" href="../../_images/image60.png"><img alt="../../_images/image60.png" src="../../_images/image60.png" style="width: 333.0px; height: 375.0px;" /></a>
+<a class="reference internal image-reference" href="../../_images/image60.png"><img alt="../../_images/image60.png" src="../../_images/image60.png" style="width: 624.0px; height: 517.5px;" /></a>
 </li>
-<li><p class="first">Click <strong>OK</strong></p>
+<li><p class="first">Click <strong>Review + create</strong></p>
 </li>
 <li><p class="first">Verify the summary</p>
 <a class="reference internal image-reference" href="../../_images/image37-top.png"><img alt="../../_images/image37-top.png" src="../../_images/image37-top.png" style="width: 382.0px; height: 189.0px;" /></a>
 </li>
 <li><p class="first">Supply your email and phone number for validation</p>
-<img alt="../../_images/lab-instance-validation.png" src="../../_images/lab-instance-validation.png" />
+<a class="reference internal image-reference" href="../../_images/lab-instance-validation.png"><img alt="../../_images/lab-instance-validation.png" src="../../_images/lab-instance-validation.png" style="width: 481.5px; height: 189.0px;" /></a>
 </li>
-<li><p class="first">Click <strong>Purchase</strong> or <strong>Create</strong></p>
+<li><p class="first">Click <strong>Create</strong></p>
 </li>
 <li><p class="first">Go to <strong>Resource groups</strong> and click on your resource group</p>
 </li>
@@ -530,7 +491,7 @@ then you can skip this task and move to the next task.</p>
 up your account.</p>
 </li>
 <li><p class="first">Accept the EULA by clicking <strong>Continue</strong></p>
-<a class="reference internal image-reference" href="../../_images/image65.png"><img alt="../../_images/image65.png" src="../../_images/image65.png" style="width: 810.0px; height: 364.0px;" /></a>
+<a class="reference internal image-reference" href="../../_images/image65.png"><img alt="../../_images/image65.png" src="../../_images/image65.png" style="width: 703.0px; height: 395.5px;" /></a>
 </li>
 </ol>
 </div>
@@ -549,9 +510,9 @@ Center.</p>
 </li>
 <li><p class="first">Click <strong>Launch Security Center</strong> and notice that ASC has recommendations
 for your environment</p>
-<a class="reference internal image-reference" href="../../_images/image67.png"><img alt="../../_images/image67.png" src="../../_images/image67.png" style="width: 572.0px; height: 266.5px;" /></a>
+<a class="reference internal image-reference" href="../../_images/image67.png"><img alt="../../_images/image67.png" src="../../_images/image67.png" style="width: 865.0px; height: 608.5px;" /></a>
 </li>
-<li><p class="first">Click on <strong>Recommendations</strong></p>
+<li><p class="first">Click on <strong>Compute &amp; apps</strong></p>
 <div class="admonition tip">
 <p class="first admonition-title">Tip</p>
 <p class="last">Recommendations are created by the Azure Security Center to make your
@@ -563,7 +524,7 @@ applications more secure. One of the recommendations is to
 </li>
 <li><p class="first">Click on the name of the application to the right of the screen</p>
 <p>Example: <em>user&lt;student number&gt;wordpress-ip</em> in the screenshot below</p>
-<a class="reference internal image-reference" href="../../_images/image68.png"><img alt="../../_images/image68.png" src="../../_images/image68.png" style="width: 717.0px; height: 118.5px;" /></a>
+<a class="reference internal image-reference" href="../../_images/image68.png"><img alt="../../_images/image68.png" src="../../_images/image68.png" style="width: 1147.0px; height: 376.0px;" /></a>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">If the name of your WordPress does not appear, please wait a few
@@ -574,22 +535,19 @@ minutes until Azure Security Center can create the Recommendations.</p>
 <a class="reference internal image-reference" href="../../_images/image69.png"><img alt="../../_images/image69.png" src="../../_images/image69.png" style="width: 622.0px; height: 154.0px;" /></a>
 </li>
 <li><p class="first">Select <strong>F5 Networks</strong></p>
-<a class="reference internal image-reference" href="../../_images/image70.png"><img alt="../../_images/image70.png" src="../../_images/image70.png" style="width: 569.0px; height: 63.0px;" /></a>
+<a class="reference internal image-reference" href="../../_images/image70.png"><img alt="../../_images/image70.png" src="../../_images/image70.png" style="width: 336.0px; height: 81.5px;" /></a>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p>There are two deployment methods available today for the
+<p>There are two consumption images available today for the
 pre-configured F5 WAF:</p>
 <ul class="simple">
-<li>“Automatically provisioned”</li>
-<li>“Semi-automatically provisioned”</li>
+<li>“Bring Your Own License”</li>
+<li>“Hourly Pay As You Go”</li>
 </ul>
-<p class="last">For this lab you will be using the <strong>“Semi-automatically provisioned”</strong> method.
-The former will most likely be depracated. The latter, semi-automatically provisioned,
-gives the user more control in the deployment.</p>
+<p class="last">For this lab you will be using the <strong>“BYOL”</strong> image.</p>
 </div>
 </li>
-<li><p class="first">Select the option for <strong>Semi-automatically provisioned</strong></p>
-<a class="reference internal image-reference" href="../../_images/lab02-waf01.png"><img alt="../../_images/lab02-waf01.png" src="../../_images/lab02-waf01.png" style="width: 578.0px; height: 365.5px;" /></a>
+<li><p class="first">Select the option for <strong>BYOL</strong></p>
 </li>
 <li><p class="first">Click <strong>Create</strong></p>
 <p>Use the information in Table 2.5 to complete the “Basics” page
@@ -610,7 +568,7 @@ during this deployment. Leave all other settings as default.</p>
 <td>&lt;User Unique&gt;</td>
 </tr>
 <tr class="row-odd"><td>Resource Group</td>
-<td>Create new: wordpress-acs&lt;student number&gt;</td>
+<td>Create new: wordpress-asc&lt;student number&gt;</td>
 </tr>
 <tr class="row-even"><td>Location</td>
 <td>&lt;User Unique&gt;</td>
@@ -913,27 +871,7 @@ Finalizing the WAF deployment will eliminate the ability to access
 the WordPress application directly. Access to the WordPress
 application will only be available through the F5 BIG-IP.</p>
 <ol class="arabic">
-<li><p class="first">Go back to the Microsoft Azure portal and navigate to Azure Security
-Center</p>
-</li>
-<li><p class="first">Click on <strong>Security Center -&gt; Overview</strong></p>
-<a class="reference internal image-reference" href="../../_images/image85.png"><img alt="../../_images/image85.png" src="../../_images/image85.png" style="width: 717.5px; height: 390.5px;" /></a>
-</li>
-<li><p class="first">Click <strong>Recommendations</strong></p>
-</li>
-<li><p class="first">Select <strong>Finalize web application firewall setup</strong></p>
-<a class="reference internal image-reference" href="../../_images/image86.png"><img alt="../../_images/image86.png" src="../../_images/image86.png" style="width: 531.5px; height: 177.5px;" /></a>
-</li>
-<li><p class="first">Click on the WordPress application</p>
-<a class="reference internal image-reference" href="../../_images/image87.png"><img alt="../../_images/image87.png" src="../../_images/image87.png" style="width: 625.0px; height: 180.0px;" /></a>
-</li>
-<li><p class="first">You will be presented a message stating to complete the remaining tasks
-via the <em>Solutions Center</em>.</p>
-<img alt="../../_images/lab02-waf19.png" src="../../_images/lab02-waf19.png" />
-</li>
-<li><p class="first">Click <strong>OK</strong></p>
-</li>
-<li><p class="first">Go back to Azure Security Center and select <strong>Security solutions</strong></p>
+<li><p class="first">Go to Azure Security Center and select <strong>Security solutions</strong></p>
 <img alt="../../_images/lab02-waf20.png" src="../../_images/lab02-waf20.png" />
 </li>
 <li><p class="first">In the “Connected solutions”, choose your WAF by selecting <strong>View</strong></p>
@@ -953,6 +891,11 @@ group to restrict the inbound HTTP/HTTPS access to only the F5 (if doing single 
 deployment or the Azure LB public IP (if doing multiple-nic deployment).</p>
 <p class="last">Now is a good time to raise your hand with questions.</p>
 </div>
+</li>
+<li><p class="first">You will be presented a message stating to complete the remaining tasks</p>
+<img alt="../../_images/lab02-waf19.png" src="../../_images/lab02-waf19.png" />
+</li>
+<li><p class="first">Click <strong>Ok</strong></p>
 </li>
 <li><p class="first">When done, refresh the <strong>Security solutions</strong> page again</p>
 </li>
