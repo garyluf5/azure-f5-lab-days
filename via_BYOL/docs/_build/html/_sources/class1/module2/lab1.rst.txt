@@ -225,40 +225,15 @@ of your WordPress application.
 
 #. Go back to the Microsoft Azure portal and navigate to Azure Security
    Center.
+#. Click on **Security solutions**
 
    .. image:: /_static/image66.png
-      :scale: 50 %
+      :scale: 30 %
 
-#. Click on **Security Center -> Welcome**
-#. Click **Launch Security Center** and notice that ASC has recommendations
-   for your environment
+#. In the "Security solutions" page, click on the **ADD** button for **Web Application Firewall**
 
    .. image:: /_static/image67.png
-      :scale: 50 %
-
-#. Click on **Compute & apps**
-
-   .. Tip::
-      Recommendations are created by the Azure Security Center to make your
-      applications more secure. One of the recommendations is to
-      **Add a web application firewall**.
-
-#. In the "Recommendations" page, select the **Add a web application firewall**
-#. Click on the name of the application to the right of the screen
-
-   Example: *user<student number>wordpress-ip* in the screenshot below
-
-   .. image:: /_static/image68.png
-      :scale: 50 %
-
-   .. Note::
-      If the name of your WordPress does not appear, please wait a few
-      minutes until Azure Security Center can create the Recommendations.
-
-#. Click on **Create New**
-
-   .. image:: /_static/image69.png
-      :scale: 50 %
+      :scale: 30 %
 
 #. Select **F5 Networks**
 
@@ -294,8 +269,9 @@ of your WordPress application.
    +-----------------------+-------------------------------------------------+
 
    .. image:: /_static/lab02-waf02.png
+      :scale: 50 %
 
-#. Click **OK**
+#. Click **OK**  
 
    Use the information in Table 2.6 to complete the “Insfrastructure Settings” page
    during this deployment. Leave all other options as default.
