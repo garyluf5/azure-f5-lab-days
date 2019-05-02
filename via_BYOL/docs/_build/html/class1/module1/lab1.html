@@ -677,6 +677,18 @@ number assigned by your proctor</p>
 <p>Example:</p>
 <a class="reference internal image-reference" href="../../_images/image29.png"><img alt="../../_images/image29.png" src="../../_images/image29.png" style="width: 1190.5px; height: 21.0px;" /></a>
 </li>
+<li><p class="first">Change the management port for Web GUI access from port 443 to 8443</p>
+<div class="admonition-tmsh admonition">
+<p class="first admonition-title">TMSH</p>
+<p class="last">modify sys httpd ssl-port 8443</p>
+</div>
+<div class="admonition-tmsh admonition">
+<p class="first admonition-title">TMSH</p>
+<p class="last">modify net self self_1nic allow-service add { <a class="reference external" href="tcp:8443">tcp:8443</a> }</p>
+</div>
+<p>Example:</p>
+<a class="reference internal image-reference" href="../../_images/image29a.png"><img alt="../../_images/image29a.png" src="../../_images/image29a.png" style="width: 1129.0px; height: 44.0px;" /></a>
+</li>
 <li><p class="first">Save the system configuration</p>
 <div class="admonition-tmsh admonition">
 <p class="first admonition-title">TMSH</p>

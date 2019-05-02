@@ -404,6 +404,21 @@ the BIG-IP's public IP address to which you will connect.
    .. image:: /_static/image29.png
       :scale: 50 %
 
+#. Change the management port for Web GUI access from port 443 to 8443
+
+   .. admonition:: TMSH
+
+      modify sys httpd ssl-port 8443
+
+   .. admonition:: TMSH
+
+      modify net self self_1nic allow-service add { tcp:8443 }
+
+   Example:
+
+   .. image:: /_static/image29a.png
+      :scale: 50 %
+
 #. Save the system configuration
 
    .. admonition:: TMSH 
